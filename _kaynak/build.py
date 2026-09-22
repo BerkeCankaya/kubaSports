@@ -113,7 +113,7 @@ def head(title, desc, current):
   <div class="container header-inner">
     <a class="brand" href="index.html" aria-label="Kuba Sports ana sayfa">
       {LOGO}
-      <span class="brand__name">KUBA<br>SPORTS<span>BAHÇELİEVLER · İZMİR</span></span>
+      <span class="brand__name">KUBA<br>SPORTS<span>KARŞIYAKA · İZMİR</span></span>
     </a>
     <nav class="nav" aria-label="Ana menü">
       <ul>{nav_items}</ul>
@@ -141,7 +141,7 @@ FOOTER = f'''</main>
       <div>
         <a class="brand" href="index.html" aria-label="Kuba Sports ana sayfa">
           {LOGO}
-          <span class="brand__name">KUBA<br>SPORTS<span>BAHÇELİEVLER · İZMİR</span></span>
+          <span class="brand__name">KUBA<br>SPORTS<span>KARŞIYAKA · İZMİR</span></span>
         </a>
         <p class="muted" style="margin-top:1rem;max-width:32ch;font-size:var(--fs-sm)">Ölçülebilir ilerleme üzerine kurulu bir antrenman salonu. Kalabalık değil, planlı.</p>
       </div>
