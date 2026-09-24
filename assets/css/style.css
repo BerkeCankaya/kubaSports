@@ -872,6 +872,37 @@ body.lightbox-open{ overflow:hidden; }
 }
 @media (min-width:760px){ .footer-grid{ grid-template-columns:1.4fr 1fr 1fr 1.2fr; } }
 
+/* ---------- 15b. Sabit WhatsApp butonu ----------
+   İşaretleme main.js §11'de tek yerden eklenir. Açılışta animasyon yok;
+   yalnızca hover büyümesi ve başka bir butonun üstüne gelince solma. */
+.wa-float{
+  --wa-size:50px;
+  position:fixed; z-index:50;
+  right:25px; bottom:calc(25px + env(safe-area-inset-bottom, 0px));
+  width:var(--wa-size); height:var(--wa-size); border-radius:50%;
+  display:grid; place-items:center;
+  background:#25D366; color:#fff;
+  box-shadow:0 6px 18px -6px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.25);
+  transition:scale var(--t-move) var(--ease-out), opacity var(--t-feedback) var(--ease-out), visibility 0s linear 0s;
+}
+.wa-float svg{ width:66%; height:66%; }
+.wa-float:hover{ scale:1.08; }
+.wa-float:focus-visible{ outline:2px solid var(--paper); outline-offset:3px; }
+/* Başka bir butonla çakışınca ya da mobil menü açıkken geri çekilir. */
+.wa-float.is-hidden,
+body.nav-open .wa-float{
+  opacity:0; visibility:hidden; pointer-events:none;
+  transition:opacity var(--t-feedback) var(--ease-out), visibility 0s linear var(--t-feedback);
+}
+
+/* Sayfa footer yazısıyla biter; buton son satırın üstüne gelince main.js §11 onu gizler. */
+@media (max-width:768px){
+  .wa-float{ right:20px; bottom:calc(20px + env(safe-area-inset-bottom, 0px)); }
+  .site-footer{ padding-bottom:calc(1rem + env(safe-area-inset-bottom, 0px)); }
+  .footer-bottom{ margin-top:var(--space-3); padding-top:1rem; gap:.35rem; font-size:.72rem; }
+}
+.reduce .wa-float{ transition:none; }
+
 /* ---------- 16. Formlar ---------- */
 .form{ display:grid; gap:1.1rem; }
 .field{ display:grid; gap:.45rem; }

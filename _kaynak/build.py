@@ -85,7 +85,7 @@ def head(title, desc, current):
   "name": "Kuba Sports",
   "description": "Bahçelievler, İzmir'de ölçülebilir ilerleme üzerine kurulu antrenman salonu.",
   "url": "https://www.kubasports.com/",
-  "telephone": "+90-232-382-20-82",
+  "telephone": "+90-507-120-20-10",
   "email": "info@kubasports.com",
   "address": {{
     "@type": "PostalAddress",
@@ -162,7 +162,7 @@ FOOTER = f'''</main>
         <h4>Ulaşım</h4>
         <ul class="muted">
           <li>Bahçelievler, Zübeyde Hanım Cd.<br>35600 Karşıyaka / İzmir</li>
-          <li><a href="tel:+902323822082">0 (232) 382 20 82</a></li>
+          <li><a href="tel:+905071202010">0507 120 20 10</a></li>
           <li><a href="mailto:info@kubasports.com">info@kubasports.com</a></li>
         </ul>
         <div class="socials" style="margin-top:1rem">
@@ -190,7 +190,7 @@ CTA_BAND = f'''
     <p class="lead" style="text-align:center">Ücretsiz deneme dersinde vücut kompozisyonu ölçümünü alıyor, hedefini konuşuyor ve sana uygun programı birlikte çiziyoruz.</p>
     <div class="btn-row" style="justify-content:center;margin-top:.8rem">
       <a class="btn" href="iletisim.html"><span>Ücretsiz deneme dersi al</span>{ARROW}</a>
-      <a class="btn btn--ghost" href="tel:+902323822082"><span>Hemen ara</span></a>
+      <a class="btn btn--ghost" href="tel:+905071202010"><span>Hemen ara</span></a>
     </div>
   </div>
 </section>
@@ -667,7 +667,7 @@ ILETISIM = f'''
         <h2 class="h3">Doğrudan ulaş</h2>
         <ul class="info-list" style="margin-top:1rem">
           <li>{svg("pin")}<div><b>Adres</b><span>Bahçelievler, Zübeyde Hanım Cd.<br>35600 Karşıyaka / İzmir</span></div></li>
-          <li>{svg("phone")}<div><b>Telefon</b><span><a href="tel:+902323822082">0 (232) 382 20 82</a></span></div></li>
+          <li>{svg("phone")}<div><b>Telefon</b><span><a href="tel:+905071202010">0507 120 20 10</a></span></div></li>
           <li>{svg("wa")}<div><b>WhatsApp</b><span><a href="https://wa.me/905071202010">Mesaj gönder</a></span></div></li>
           <li>{svg("mail")}<div><b>E-posta</b><span><a href="mailto:info@kubasports.com">info@kubasports.com</a></span></div></li>
           <li>{svg("clock")}<div><b>Çalışma saatleri</b><span>Hafta içi 10:00–23:00<br>Cumartesi 11:00–19:00<br>Pazar 12:00–17:00</span></div></li>

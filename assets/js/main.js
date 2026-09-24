@@ -654,4 +654,43 @@
     }
   }
 
+  /* ---------- 11. Sabit WhatsApp butonu ----------
+     Tüm sayfalar için tek tanım burada. Başka bir buton (ör. "Hemen ara",
+     form gönder) ya da footer'ın son satırı butonun altına denk gelince
+     .is-hidden ile geri çekilir. */
+  (function () {
+    var WA_URL = 'https://wa.me/905071202010?text=Merhaba%2C%20%C3%BCcretsiz%20deneme%20dersi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.';
+    var wa = document.createElement('a');
+    wa.className = 'wa-float';
+    wa.href = WA_URL;
+    wa.target = '_blank';
+    wa.rel = 'noopener';
+    wa.setAttribute('aria-label', 'WhatsApp ile yazın');
+    wa.innerHTML =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<path d="M20 12a8 8 0 0 1-11.9 7L4 20l1.1-3.9A8 8 0 1 1 20 12Z"/>' +
+      '<path d="M9.2 9.4c.4 2.5 2.9 5 5.4 5.4l1-1.4 1.8.8v1.4c-3.6.5-7.7-3.6-7.2-7.2h1.4l.8 1.8Z" fill="currentColor" stroke-width="1"/>' +
+      '</svg>';
+    document.body.appendChild(wa);
+
+    var targets = $$('main .btn, main button[type="submit"], .footer-bottom > span');
+    if (!targets.length) return;
+    var ticking = false;
+    var check = function () {
+      ticking = false;
+      var w = wa.getBoundingClientRect();
+      var pad = 8;
+      var hit = targets.some(function (el) {
+        var r = el.getBoundingClientRect();
+        return r.width && r.left < w.right + pad && r.right > w.left - pad &&
+               r.top < w.bottom + pad && r.bottom > w.top - pad;
+      });
+      wa.classList.toggle('is-hidden', hit);
+    };
+    var schedule = function () { if (!ticking) { ticking = true; requestAnimationFrame(check); } };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    check();
+  })();
+
 })();
