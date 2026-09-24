@@ -6,9 +6,9 @@ NAV = [
     ("index.html",      "Ana Sayfa",   "00"),
     ("hakkimizda.html", "Hakkımızda",  "01"),
     ("hizmetler.html",  "Hizmetler",   "02"),
-    ("egitmenler.html", "Eğitmenler",  "03"),
-    ("donusumler.html", "Dönüşümler",  "04"),
-    ("iletisim.html",   "İletişim",    "05"),
+    ("uyelikler.html",  "Üyelikler",   "03"),
+    ("egitmenler.html", "Eğitmenler",  "04"),
+    ("donusumler.html", "Dönüşümler",  "05"),
 ]
 
 ICON = {
@@ -119,7 +119,7 @@ def head(title, desc, current):
       <ul>{nav_items}</ul>
     </nav>
     <div class="header-actions">
-      <a class="btn btn--sm" href="iletisim.html"><span>Ücretsiz deneme</span>{ARROW}</a>
+      <a class="btn btn--sm" href="iletisim.html"><span>Bize ulaş</span>{ARROW}</a>
       <button class="burger" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="drawer"><span></span></button>
     </div>
   </div>
@@ -185,11 +185,11 @@ FOOTER = f'''</main>
 CTA_BAND = f'''
 <section class="cta-band" data-rail>
   <div class="container cta-band__inner reveal-group">
-    <span class="tag">İlk ders bizden</span>
-    <h2 class="h2">Salonu gör, bir ders dene,<br>sonra karar ver</h2>
-    <p class="lead" style="text-align:center">Ücretsiz deneme dersinde vücut kompozisyonu ölçümünü alıyor, hedefini konuşuyor ve sana uygun programı birlikte çiziyoruz.</p>
+    <span class="tag">Tanışalım</span>
+    <h2 class="h2">SALONU GÖR, SORULARINI SOR,<br>SONRA KARAR VER</h2>
+    <p class="lead" style="text-align:center">Salonu gez, hedefini konuş, sana uygun programı birlikte belirleyelim.</p>
     <div class="btn-row" style="justify-content:center;margin-top:.8rem">
-      <a class="btn" href="iletisim.html"><span>Ücretsiz deneme dersi al</span>{ARROW}</a>
+      <a class="btn" href="iletisim.html"><span>Ücretsiz Bilgi Al</span>{ARROW}</a>
       <a class="btn btn--ghost" href="tel:+905071202010"><span>Hemen ara</span></a>
     </div>
   </div>
@@ -242,7 +242,7 @@ SERVICES = [
     ("kardiyo", "Yüksek tempo", "pulse", "Kardiyo &amp;<br>kondisyon",
      "Yağ yakımını desteklerken nefes kapasiteni ve dayanıklılığını geliştiren, kalp atışına göre ayarlanan interval seansları."),
     ("pilates", "Denge &amp; kontrol", "spine", "Reformer<br>pilates",
-     "Duruşunu düzelt, esnekliğini artır, derin kas grubunu güvenli biçimde çalıştır. Her seviyeye uygun, en fazla altı kişilik gruplar."),
+     "Duruşunu düzelt, esnekliğini artır, derin kas grubunu güvenli biçimde çalıştır. Her seviyeye uygun, en fazla 5 kişilik gruplar."),
     ("beslenme", "Bilimsel plan", "leaf", "Beslenme<br>desteği",
      "Diyetisyen eşliğinde yaşam tarzına uyan, sürdürülebilir bir plan. Antrenman programınla birlikte her dört haftada güncellenir."),
 ]
@@ -343,8 +343,8 @@ INDEX = f'''
       </h1>
       <p class="hero__sub">Kişiye özel antrenman, dört haftada bir ölçülen ilerleme ve seni adıyla tanıyan bir eğitmen kadrosu. Kalabalık değil — planlı.</p>
       <div class="btn-row hero__cta">
-        <a class="btn" href="iletisim.html"><span>Ücretsiz deneme dersi</span>{ARROW}</a>
-        <a class="btn btn--ghost" href="hizmetler.html"><span>Hizmetleri gör</span></a>
+        <a class="btn" href="iletisim.html"><span>Hemen bize ulaş</span>{ARROW}</a>
+        <a class="btn btn--ghost" href="uyelikler.html"><span>Üyelikleri gör</span></a>
       </div>
       <ul class="metrics">
         <li><b data-count="12">12</b><span>haftalık ölçümlü program</span></li>
@@ -474,7 +474,7 @@ HAKKIMIZDA = f'''
     <div class="benefits reveal-group">
       <div class="benefit"><span class="benefit__icon">{svg("target")}</span><div><h4 class="h4">1250 m&sup2; alan</h4><p>Kuvvet, kardiyo ve reformer için üç ayrı bölge. Isınma ve mobilite alanı ayrı tutulur.</p></div></div>
       <div class="benefit"><span class="benefit__icon">{svg("chart")}</span><div><h4 class="h4">Ölçüm odası</h4><p>Vücut kompozisyonu cihazı ve karşılaştırmalı raporlama. Ölçüm ücreti üyelik içinde.</p></div></div>
-      <div class="benefit"><span class="benefit__icon">{svg("shield")}</span><div><h4 class="h4">Kadın üyelere özel saatler</h4><p>Hafta içi belirlenen saat aralıklarında reformer stüdyosu kadın üyelere ayrılır.</p></div></div>
+      <div class="benefit"><span class="benefit__icon">{svg("shield")}</span><div><h4 class="h4">Kadınlara özel reformer stüdyosu</h4><p>Reformer pilates stüdyomuz tamamen kadınlara özeldir; dersler en fazla 5 kişilik gruplarla yapılır.</p></div></div>
       <div class="benefit"><span class="benefit__icon">{svg("users")}</span><div><h4 class="h4">Sınırlı kontenjan</h4><p>Aynı seansta kabul edilen üye sayısı sabit. Ekipman beklemek programın parçası değildir.</p></div></div>
     </div>
   </div>
@@ -493,7 +493,7 @@ DETAIL = {
                 "Koşu, kürek ve bisiklet üzerinde dönüşümlü çalışma",
                 "Dayanıklılık testiyle başlar, altı haftada tekrarlanır",
                 "Kuvvet programıyla birlikte veya tek başına alınabilir"],
- "pilates":    ["En fazla altı kişilik reformer grupları",
+ "pilates":    ["En fazla 5 kişilik reformer grupları",
                 "Postür değerlendirmesiyle başlayan seviyelendirme",
                 "Bel ve boyun şikâyeti olanlar için ayrı akış",
                 "Doğum sonrası dönem için özel program"],
@@ -504,10 +504,12 @@ DETAIL = {
 }
 
 FAQ = [
+ ("Metabolizma nedir ve neden önemlidir?",
+  "Metabolizma, vücudun temel fonksiyonlarını devam ettirebilmek için yaktığı enerji miktarıdır. Yemek yeme, uyuma, temizlenme ve benzeri faaliyetler sırasında vücudunuz devamlı kalori yakar."),
  ("Hiç spor yapmadım, başlayabilir miyim?",
   "Evet — üyelerimizin büyük bölümü öyle başlıyor. İlk gün ölçüm ve hareket taraması yapılır, program senin bulunduğun noktadan kurulur. İlk iki hafta teknik öğrenmeye ayrılır, ağırlık sonra gelir."),
- ("Deneme dersi gerçekten ücretsiz mi?",
-  "Evet. Ücretsiz deneme dersinde vücut kompozisyonu ölçümünü alıyor, hedefini konuşuyor ve bir antrenman yapıyorsun. Üyelik açmak zorunda değilsin."),
+ ("Ağrıyan bir kası çalıştırmalı mıyız?",
+  "Çalıştırmamak daha doğrudur. Bacak çalıştırırsanız ve bacaklarınız “Squat” hareketinden dolayı ağrıyorsa ve o gün “Göğüs” çalışmanız varsa sorun yoktur. Fakat bacak çalışmanız varsa ve bacak kaslarınız son bacak çalışmasından sonra hâlâ ağrıyorsa, en az bir gün daha dinlenmelisiniz. Çünkü kaslarınız dinlenirken gelişir ve yenilenir."),
  ("Sakatlık geçmişim var, program yazılır mı?",
   "Yazılır. Fizyoterapi raporun veya doktor önerin varsa getir; program ona göre kurulur. Gerekirse eğitmen doğrudan fizyoterapistinle iletişime geçer."),
  ("Üyelik dondurma hakkım var mı?",
@@ -612,9 +614,9 @@ write("donusumler.html", head("Dönüşümler", "Kuba Sports üyelerinin ölçü
 
 # ============================ İLETİŞİM ============================
 ILETISIM = f'''
-{page_head("İletişim", "Ücretsiz deneme dersi",
-           "Bir ders dene,<br>sonra karar ver",
-           "Formu doldur, 24 saat içinde arayıp sana uygun bir saat belirleyelim. Deneme dersinde ölçümünü alıyor, hedefini konuşuyor ve bir antrenman yapıyorsun.")}
+{page_head("İletişim", "Bize ulaş",
+           "SORULARINI SOR,<br>SONRA KARAR VER",
+           "Formu doldur, 24 saat içinde seni arayalım.")}
 
 <section class="section section--flush-top" data-rail>
   <div class="container">
@@ -659,7 +661,7 @@ ILETISIM = f'''
           <small>İsteğe bağlı. Sakatlık geçmişin varsa yazman programı hızlandırır.</small>
         </div>
 
-        <button class="btn" type="submit"><span>Deneme dersi talebi gönder</span>{ARROW}</button>
+        <button class="btn" type="submit"><span>Hemen gönder</span>{ARROW}</button>
         <small class="muted" style="font-size:var(--fs-xs)">Gönderdiğin bilgiler yalnızca seninle iletişim kurmak için kullanılır.</small>
       </form>
 

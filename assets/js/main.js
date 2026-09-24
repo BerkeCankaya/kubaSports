@@ -1,6 +1,6 @@
 /* =============================================================
    KUBA SPORTS — main.js
-   Bağımlılık: GSAP + ScrollTrigger (yalnızca §4); §9 data/reviews.js verisini okur.
+   Bağımlılık: GSAP + ScrollTrigger (yalnızca §4); §3b data/fiyatlar.js, §9 data/reviews.js verisini okur.
    Sadece transform/opacity animasyonları.
    ============================================================= */
 (function () {
@@ -56,6 +56,55 @@
     requestAnimationFrame(function () {
       requestAnimationFrame(function () { hero.classList.add('is-ready'); });
     });
+  }
+
+  /* ---------- 3b. Üyelik fiyat listesi ----------
+     uyelikler.html'deki [data-prices] kapsayıcılarını data/fiyatlar.js
+     (window.KUBA_FIYATLAR) verisinden doldurur. §4'ten ÖNCE çalışır ki
+     kaydırma tetikleri son yerleşime göre hesaplansın. */
+  var prices = window.KUBA_FIYATLAR;
+  if (prices && $('[data-prices]')) {
+    var esc = function (s) {
+      return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+    };
+    var tl = function (n) { return Number(n).toLocaleString('tr-TR') + ' TL'; };
+    var ARROW_SVG = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg>';
+    var amount = function (p) {
+      return '<p class="price__amount">' +
+        (p.eski ? '<del><span class="sr-only">Eski fiyat: </span>' + tl(p.eski) + '</del>' : '') +
+        '<strong><span class="sr-only">' + (p.eski ? 'Kampanyalı fiyat: ' : 'Fiyat: ') + '</span>' + tl(p.yeni) + '</strong></p>';
+    };
+    var card = function (p, chip) {
+      return '<article class="card price">' +
+        (chip ? '<span class="price__chip">' + esc(chip) + '</span>' : '') +
+        '<h3 class="h3">' + esc(p.ad) + '</h3>' + amount(p) +
+        '<div class="card__foot"><a class="link" href="iletisim.html"><span>Bilgi al</span>' + ARROW_SVG + '</a></div></article>';
+    };
+    var fill = function (sel, html) { var el = $(sel); if (el) el.innerHTML = html; };
+
+    if (prices.fitness) {
+      fill('[data-prices="fitness"]', prices.fitness.paketler.map(function (p) { return card(p); }).join(''));
+      fill('[data-price-extras="fitness"]', (prices.fitness.ekler || []).map(function (e) {
+        return '<li>' + esc(e.ad) + ': <b>' + tl(e.fiyat) + '</b></li>';
+      }).join(''));
+    }
+    if (prices.pilates) {
+      fill('[data-prices="pilates"]', prices.pilates.gruplar.map(function (g) {
+        return g.paketler.map(function (p) { return card(p, g.ad); }).join('');
+      }).join(''));
+      var k = prices.pilates.kampanya;
+      if (k) {
+        fill('[data-price-promo="pilates"]',
+          '<div class="price-promo__head"><span class="price-promo__badge">Kampanya</span>' +
+          '<h3 class="h3">' + esc(k.ad) + '</h3><p>' + esc(k.not) + '</p></div>' +
+          '<div class="grid g-2">' + k.paketler.map(function (p) { return card(p); }).join('') + '</div>');
+      }
+    }
+    /* Notlar birden fazla yerde gösterilebilir (Fitness ve Pilates bölümlerinin altı). */
+    var notesHtml = (prices.notlar || []).map(function (n) {
+      return '<li>' + esc(n.replace('{gecerlilik}', prices.gecerlilik || '')) + '</li>';
+    }).join('');
+    $$('[data-price-notes]').forEach(function (el) { el.innerHTML = notesHtml; });
   }
 
   /* ---------- 4. Kaydırmada beliren bloklar (GSAP) ----------

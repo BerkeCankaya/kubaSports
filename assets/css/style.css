@@ -173,6 +173,11 @@ h4,.h4{ font-size:var(--fs-h4); font-variation-settings:'wdth' 95,'wght' 650; li
 .section--tight{ padding-block:var(--space-5); }
 .section--flush-top{ padding-top:var(--space-4); }
 .section--snug-top{ padding-top:.75rem; }
+/* Birbirine bağlı iki bölüm (ör. Üyelikler: Fitness + Pilates) arasında tek, dar boşluk. */
+.section.section--flush-bottom{ padding-bottom:0; }
+.section--flush-bottom + .section{ padding-top:calc(var(--space-5) + 15px); }
+/* Sayfa başlığından hemen sonra: başlığın alt boşluğu (--space-4) + bu = --space-5 + 15px, yani yukarıdaki bölüm arasıyla aynı. */
+.section.section--after-head{ padding-top:calc(var(--space-5) + 15px - var(--space-4)); }
 .section-head{ display:grid; gap:var(--space-2); margin-bottom:var(--space-4); max-width:70ch; }
 .section-head .h2{ margin-top:.35rem; }
 
@@ -1055,6 +1060,46 @@ body.nav-open .wa-float{
   background:var(--plum); box-shadow:0 0 10px var(--plum);
 }
 .todo b{ color:var(--paper); font-variation-settings:'wdth' 100,'wght' 640; }
+
+/* Ekranda görünmez, ekran okuyucu okur. */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* Üyelik fiyat kartları (uyelikler.html) — içerik data/fiyatlar.js'ten, main.js §3b */
+.price__chip{ font-size:var(--fs-xs); color:var(--plum-lit); letter-spacing:.06em; font-variation-settings:'wdth' 114,'wght' 600; text-transform:uppercase; }
+.price__amount{ display:grid; gap:.2rem; margin-top:.2rem; }
+.price__amount del{ font-size:var(--fs-sm); color:var(--paper-dim); text-decoration-thickness:1.5px; text-decoration-color:rgba(255,151,172,.8); }
+.price__amount strong{
+  font-size:clamp(1.8rem,2.6vw,2.2rem); line-height:1.05; color:var(--white);
+  font-variation-settings:'wdth' 82,'wght' 830; font-weight:normal;
+}
+.price .card__foot{ margin-top:auto; }
+.price-extras,.price-notes{ display:flex; flex-wrap:wrap; gap:.4rem 1.6rem; margin-top:var(--space-3); font-size:var(--fs-sm); color:var(--paper-dim); }
+.price-extras b{ color:var(--paper); font-weight:normal; font-variation-settings:'wght' 640; }
+.price-notes{ display:grid; gap:.45rem; margin-top:var(--space-4); padding-top:var(--space-3); border-top:1px solid var(--ink-700); font-size:var(--fs-xs); }
+.price-notes li::before{ content:'*'; margin-right:.45rem; color:var(--plum-lit); }
+/* Gündüz kampanyası: ayrı, dikkat çeken kutu */
+.price-promo{
+  margin-top:var(--space-4); padding:var(--space-3);
+  border-radius:var(--radius-l);
+  background:radial-gradient(120% 90% at 100% 0%, rgba(121,0,178,.35), transparent 60%),
+             linear-gradient(160deg, rgba(55,0,254,.22), rgba(9,0,41,.2));
+  box-shadow:inset 0 0 0 1.5px var(--volt-lit), 0 26px 50px -30px var(--volt);
+  display:grid; gap:var(--space-3);
+}
+.price-promo:empty{ display:none; }
+.price-promo__head{ display:grid; gap:.35rem; }
+.price-promo__head p{ color:var(--paper-dim); font-size:var(--fs-sm); }
+.price-promo__badge{
+  width:max-content; padding:.28rem .7rem; border-radius:99px;
+  background:var(--volt); color:var(--white);
+  font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; font-variation-settings:'wdth' 116,'wght' 680;
+}
+@media (min-width:1040px){
+  .price-promo{ grid-template-columns:minmax(0,1fr) minmax(0,2fr); align-items:center; padding:var(--space-4); }
+}
 
 /* ---------- 18. Animasyon ---------- */
 /* İçerik varsayılan olarak GÖRÜNÜRDÜR. Gizleme yalnızca html.anim varken
