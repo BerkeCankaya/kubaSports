@@ -904,8 +904,19 @@ body.nav-open .wa-float{
 .reduce .wa-float{ transition:none; }
 
 /* ---------- 16. Formlar ---------- */
+/* Demo bildirimi — form gönderilince main.js §7 açar. */
+.notice{
+  width:min(calc(100% - 32px), 420px); margin:auto; padding:var(--space-4) var(--space-3) var(--space-3);
+  border:1px solid var(--ink-600); border-radius:var(--radius-l);
+  background:var(--ink-900); color:var(--paper); text-align:center;
+  box-shadow:0 30px 60px -30px rgba(55,0,254,.6);
+}
+.notice::backdrop{ background:rgba(4,0,20,.78); }
+.notice__title{ font-size:1.4rem; text-transform:uppercase; font-variation-settings:'wdth' 82,'wght' 750; }
+.notice__text{ margin-top:.7rem; color:var(--paper-dim); line-height:1.6; }
+.notice .btn{ margin-top:var(--space-3); }
 .form{ display:grid; gap:1.1rem; }
-.field{ display:grid; gap:.45rem; }
+.field{ display:grid; gap:.45rem; position:relative; }
 .field label{ font-size:var(--fs-xs); color:var(--paper); font-variation-settings:'wdth' 108,'wght' 600; }
 .field input,.field select,.field textarea{
   width:100%; min-height:52px; padding:.85rem 1rem;
@@ -916,13 +927,27 @@ body.nav-open .wa-float{
   transition:box-shadow var(--t-feedback) var(--ease-out);
 }
 .field textarea{ min-height:130px; resize:vertical; line-height:1.55; }
+/* Telefon: +90 sabit önek, kutunun içinde; yalnızca 10 hane girilir (main.js §7). */
+.phone{ position:relative; }
+.phone__prefix{
+  position:absolute; left:1rem; top:0; bottom:0; display:flex; align-items:center;
+  padding-right:.75rem;
+  font-size:var(--fs-sm); color:var(--paper-dim); pointer-events:none;
+}
+/* Ayraç: ortada --ink-800, üste ve alta doğru kaybolur; kutunun kenarlığına değmez. */
+.phone__prefix::after{
+  content:""; position:absolute; right:0; top:0; bottom:0; width:1px;
+  background:linear-gradient(to bottom, transparent, var(--ink-800) 30%, var(--ink-800) 70%, transparent);
+}
+.field .phone input{ padding-left:4.1rem; letter-spacing:.02em; }
 .field input::placeholder,.field textarea::placeholder{ color:#6B6499; }
 .field input:focus,.field select:focus,.field textarea:focus{
   outline:none; box-shadow:inset 0 0 0 1.5px var(--volt-lit), 0 0 0 4px rgba(55,0,254,.18);
 }
 .field small{ font-size:var(--fs-xs); color:var(--paper-dim); }
 .field.is-invalid input,.field.is-invalid select,.field.is-invalid textarea{ box-shadow:inset 0 0 0 1.5px #FF6B8A; }
-.field__error{ font-size:var(--fs-xs); color:#FF97AC; display:none; }
+/* Hata etiketin hizasında, sağ üstte durur; akışa girmediği için alanlar kaymaz. */
+.field__error{ position:absolute; top:0; right:0; font-size:var(--fs-xs); line-height:inherit; white-space:nowrap; color:#FF97AC; display:none; }
 .field.is-invalid .field__error{ display:block; }
 .form__status{
   display:none; padding:.9rem 1.1rem; border-radius:var(--radius-s);

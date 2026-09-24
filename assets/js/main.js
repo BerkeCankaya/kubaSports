@@ -252,6 +252,19 @@
       return ok;
     };
 
+    /* Telefon: +90 kutuda sabit yazılı; alana yalnızca 10 rakam girilir.
+       Yapıştırılan "+90 5xx…" ya da "05xx…" biçimleri de 10 haneye indirgenir. */
+    var tel = $('input[type="tel"]', form);
+    if (tel) {
+      tel.addEventListener('input', function () {
+        var d = tel.value.replace(/\D/g, '');
+        if (d.length > 10 && d.indexOf('90') === 0) d = d.slice(2);
+        if (d.charAt(0) === '0') d = d.replace(/^0+/, '');
+        d = d.slice(0, 10);
+        if (d !== tel.value) tel.value = d;
+      });
+    }
+
     $$('input, select, textarea', form).forEach(function (input) {
       input.addEventListener('blur', function () { validate(input); });
       input.addEventListener('input', function () {
@@ -277,14 +290,34 @@
         return;
       }
 
-      /* Demo davranışı — canlıda bunun yerine kendi form servisinizi bağlayın
-         (Formspree, Netlify Forms, kendi PHP/Node uç noktanız vb.) */
+      /* Demo davranışı — form henüz hiçbir yere gönderilmiyor. Canlıda bunun
+         yerine kendi form servisinizi bağlayın (Formspree, Netlify Forms,
+         kendi PHP/Node uç noktanız vb.) ve bu bildirimi kaldırın.
+         Girilen bilgiler silinmez; ziyaretçi WhatsApp/telefonla iletebilir. */
       if (status) {
-        status.textContent = 'Teşekkürler. Talebiniz alındı, 24 saat içinde size dönüş yapacağız.';
-        status.classList.add('is-visible');
+        status.textContent = '';
+        status.classList.remove('is-visible');
       }
-      form.reset();
+      showDemoNotice();
     });
+
+    var notice = null;
+    var showDemoNotice = function () {
+      if (!notice) {
+        notice = document.createElement('dialog');
+        notice.className = 'notice';
+        notice.setAttribute('aria-labelledby', 'notice-title');
+        notice.innerHTML =
+          '<h2 class="notice__title" id="notice-title">Demo sürümü</h2>' +
+          '<p class="notice__text">Bu bir demo sürümüdür, form yayına alındığında aktif olacak.</p>' +
+          '<button class="btn" type="button" data-notice-close><span>Tamam</span></button>';
+        document.body.appendChild(notice);
+        $('[data-notice-close]', notice).addEventListener('click', function () { notice.close(); });
+        notice.addEventListener('click', function (e) { if (e.target === notice) notice.close(); });   /* arka plan */
+      }
+      if (typeof notice.showModal === 'function') notice.showModal();
+      else window.alert('Bu bir demo sürümüdür, form yayına alındığında aktif olacak.');
+    };
   }
 
   /* ---------- 8. Footer yılı ---------- */

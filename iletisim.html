@@ -99,19 +99,19 @@
           <div class="field">
             <label for="ad">Ad soyad</label>
             <input id="ad" name="ad" type="text" autocomplete="name" placeholder="Adın ve soyadın" required>
-            <span class="field__error">Ad soyad alanı gerekli.</span>
+            <span class="field__error">Gerekli alan</span>
           </div>
           <div class="field">
             <label for="tel">Telefon</label>
-            <input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="05XX XXX XX XX" pattern="[0-9\s()+-]{10,20}" required>
-            <span class="field__error">Ulaşabileceğimiz bir telefon numarası yaz.</span>
+            <div class="phone"><span class="phone__prefix" aria-hidden="true">+90</span><input id="tel" name="tel" type="tel" autocomplete="tel-national" inputmode="numeric" placeholder="5XX XXX XX XX" pattern="[0-9]{10}" required></div>
+            <span class="field__error">10 hane olmalı</span>
           </div>
         </div>
 
         <div class="field">
           <label for="eposta">E-posta</label>
           <input id="eposta" name="eposta" type="email" autocomplete="email" placeholder="ornek@eposta.com" required>
-          <span class="field__error">Geçerli bir e-posta adresi gerekli.</span>
+          <span class="field__error">Geçerli e-posta gir</span>
         </div>
 
         <div class="field">
@@ -122,7 +122,7 @@
             <option>Reformer / Pilates</option>
             <option>Üyelik / Genel Bilgi</option>
           </select>
-          <span class="field__error">Bir program seç — emin değilsen Üyelik / Genel Bilgi'yi işaretle.</span>
+          <span class="field__error">Bir program seç</span>
         </div>
 
         <div class="field">
