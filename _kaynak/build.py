@@ -353,7 +353,7 @@ INDEX = f'''
         <li><b>1<i>:</i>1</b><span>kişiye özel takip</span></li>
       </ul>
     </div>
-    {media("media hero__media", "Salon fotoğrafı", photo=photo("home-hero"))}
+    {media("media hero__media", "Salon fotoğrafı", photo=photo("home-hero-v2"))}
   </div>
 </section>
 
