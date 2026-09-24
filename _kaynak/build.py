@@ -127,7 +127,7 @@ def head(title, desc, current):
 
 <div class="drawer" id="drawer" aria-hidden="true">
   {drawer_items}
-  <a class="btn" href="iletisim.html"><span>Ücretsiz deneme dersi</span>{ARROW}</a>
+  <a class="btn" href="iletisim.html"><span>Hemen bize ulaş</span>{ARROW}</a>
 </div>
 
 <main id="main">

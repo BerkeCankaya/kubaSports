@@ -741,7 +741,7 @@
      form gönder) ya da footer'ın son satırı butonun altına denk gelince
      .is-hidden ile geri çekilir. */
   (function () {
-    var WA_URL = 'https://wa.me/905071202010?text=Merhaba%2C%20%C3%BCcretsiz%20deneme%20dersi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.';
+    var WA_URL = 'https://wa.me/905071202010?text=Merhaba%2C%20%C3%BCyelik%20ve%20salonunuz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.';
     var wa = document.createElement('a');
     wa.className = 'wa-float';
     wa.href = WA_URL;
