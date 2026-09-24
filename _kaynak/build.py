@@ -441,8 +441,8 @@ HAKKIMIZDA = f'''
     <div class="grid g-2" style="align-items:center;gap:2.5rem">
       {media("media reveal", "Salon içi — geniş açı", photo=photo("salon-genis-aci"))}
       <div class="reveal-group">
-        <h2 class="h2">Sekiz yılda öğrendiğimiz<br>tek şey var</h2>
-        <p class="lead" style="margin-top:1.2rem">İnsanlar salonu bırakmıyor; sonuç göremediği için bırakıyor. 2016'da açtığımızda da bugün de aynı soruyu soruyoruz: bu üye dört hafta sonra neyin değiştiğini rakamla görebilecek mi?</p>
+        <h2 class="h2">On altı yılda öğrendiğimiz<br>tek şey var</h2>
+        <p class="lead" style="margin-top:1.2rem">İnsanlar salonu bırakmıyor; sonuç göremediği için bırakıyor. 2010'da açtığımızda da bugün de aynı soruyu soruyoruz: bu üye dört hafta sonra neyin değiştiğini rakamla görebilecek mi?</p>
         <p class="muted" style="margin-top:1rem;font-size:var(--fs-sm);max-width:56ch">Bu yüzden ekipman listesiyle değil, çalışma yöntemiyle anlatıyoruz kendimizi. 1250 m&sup2;'lik alanda kuvvet bölgesi, kardiyo bölgesi ve ayrı bir reformer stüdyosu var — ama asıl fark, o alanı nasıl planladığımızda.</p>
       </div>
     </div>
