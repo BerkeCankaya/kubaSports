@@ -334,12 +334,87 @@
             '<span class="stars" role="img" aria-label="5 üzerinden ' + puan + ' yıldız">' + starsHtml(puan) + '</span>' +
             '<span class="review__source"><i aria-hidden="true">G</i>Google</span>' +
           '</div>' +
-          '<p class="review__text">' + esc(r.metin) + '</p>' +
+          '<p class="review__text" data-review-text data-full="' + esc(r.metin) + '"></p>' +
           '<footer class="review__meta"><b>' + esc(r.ad || 'Google kullanıcısı') + '</b>' +
             (r.tarih ? '<time>' + esc(r.tarih) + '</time>' : '') +
           '</footer>' +
         '</li>';
       }).join('');
+
+      /* Uzun yorumlar 8 satırı aşınca metin karakter bazında kırpılır ve
+         kırpılan yerin hemen ardına satır içi "devamını oku" eklenir
+         (ayrı bir blok değil, paragrafın kendisinin bir parçası). Tam tersi
+         için tıklayınca "daha az göster" ile eski haline döner. */
+      var LINE_CLAMP = 8;
+      var appendMoreLink = function (el, label) {
+        var a = document.createElement('a');
+        a.href = '#';
+        a.className = 'review__more';
+        a.setAttribute('data-review-more', '');
+        a.textContent = label;
+        el.appendChild(a);
+      };
+      var renderClampedText = function (el, expanded) {
+        var full = el.getAttribute('data-full') || '';
+        el.classList.toggle('is-expanded', expanded);
+        if (expanded) {
+          el.textContent = full + ' ';
+          appendMoreLink(el, 'daha az göster');
+          return;
+        }
+        el.textContent = full;
+        var lineHeight = parseFloat(getComputedStyle(el).lineHeight) || 20;
+        var maxHeight = Math.round(lineHeight * LINE_CLAMP) + 1;
+        if (el.scrollHeight <= maxHeight) return;   /* zaten 8 satıra sığıyor */
+        el.style.maxHeight = maxHeight + 'px';
+        el.style.overflow = 'hidden';
+        var lo = 0, hi = full.length, best = 0;
+        while (lo <= hi) {
+          var mid = (lo + hi) >> 1;
+          el.textContent = full.slice(0, mid).replace(/\s+$/, '') + '… ';
+          appendMoreLink(el, 'devamını oku');
+          if (el.scrollHeight <= maxHeight) { best = mid; lo = mid + 1; } else hi = mid - 1;
+        }
+        el.textContent = full.slice(0, best).replace(/\s+$/, '') + '… ';
+        appendMoreLink(el, 'devamını oku');
+        el.style.maxHeight = '';
+        el.style.overflow = '';
+      };
+      var refreshClampedTexts = function () {
+        $$('[data-review-text]', track).forEach(function (el) {
+          if (!el.classList.contains('is-expanded')) renderClampedText(el, false);
+        });
+      };
+      /* "Devamını oku / Daha az göster": kart boyu anında sıçramasın diye
+         yükseklik + opaklık birlikte yumuşak geçer (reduced'ta anında). */
+      var animateTextChange = function (el, expand) {
+        if (reduced) { renderClampedText(el, expand); return; }
+        var fromHeight = el.getBoundingClientRect().height;
+        renderClampedText(el, expand);
+        var toHeight = el.scrollHeight;
+        el.style.transition = 'none';
+        el.style.height = fromHeight + 'px';
+        el.style.overflow = 'hidden';
+        el.style.opacity = '.35';
+        void el.offsetHeight;   /* reflow — geçiş başlangıç değerini sabitler */
+        el.style.transition = 'height var(--t-move) var(--ease-out), opacity var(--t-feedback) var(--ease-out)';
+        requestAnimationFrame(function () {
+          el.style.height = toHeight + 'px';
+          el.style.opacity = '1';
+        });
+        el.addEventListener('transitionend', function () {
+          el.style.transition = el.style.height = el.style.overflow = el.style.opacity = '';
+        }, { once: true });
+      };
+      track.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-review-more]');
+        if (!btn) return;
+        e.preventDefault();
+        var textEl = btn.closest('[data-review-text]');
+        if (!textEl) return;
+        animateTextChange(textEl, !textEl.classList.contains('is-expanded'));
+      });
+      refreshClampedTexts();
 
       /* Özet: ortalama puan + yıldız + toplam yorum (ozet alanları boşsa listeden) */
       var ozet  = reviewsData.ozet || {};
@@ -487,6 +562,7 @@
         resizeT = setTimeout(function () {
           var n = perView();
           if (n !== lastN) { lastN = n; current = Math.min(current, pageCount() - 1); renderDots(); }
+          refreshClampedTexts();
           goTo(current, true);
           startAuto();
         }, 150);
@@ -514,7 +590,23 @@
         if (!b) return;
         var cat = b.getAttribute('data-filter');
         $$('[data-filter]', filterBar).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-        gItems.forEach(function (li) { li.hidden = cat !== 'all' && li.getAttribute('data-cat') !== cat; });
+
+        /* Yeni görünecek kareler (o an gizliyken açılanlar) sayfa açılışındaki
+           gibi yumuşak fade + hafif yukarı kayma ile gelsin; zaten görünür
+           kalanlar tekrar oynamasın. */
+        var toShow = [];
+        gItems.forEach(function (li) {
+          var show = cat === 'all' || li.getAttribute('data-cat') === cat;
+          if (!show) { li.hidden = true; return; }
+          if (li.hidden) toShow.push(li);
+          li.hidden = false;
+        });
+        if (toShow.length && !reduced && window.gsap) {
+          gsap.fromTo(toShow,
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: .55, ease: 'power3.out', stagger: .045, clearProps: 'transform,opacity', overwrite: 'auto' }
+          );
+        }
         if (window.ScrollTrigger) ScrollTrigger.refresh();   /* sayfa boyu değişti */
       });
     }

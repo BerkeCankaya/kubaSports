@@ -5,9 +5,8 @@
    dokunman gerekmez. (JSON yerine .js: sayfa çift tıklayarak file://
    ile açıldığında da çalışsın diye.)
 
-   !!! AŞAĞIDAKİ 6 YORUM ÖRNEKTİR — gerçek üye yorumu değildir. !!!
-   Yayına almadan önce Google işletme profilindeki gerçek yorumlarla
-   (ad, puan, tarih, metin) birebir değiştir.
+   Aşağıdaki yorumlar Google işletme profilinden alınan gerçek üye
+   yorumlarıdır; tarihe göre en yeniden en eskiye sıralıdır.
 
    Alanlar:
      ozet.puan        → Google'daki ortalama puan (ör. 4.8). null bırakılırsa
@@ -19,46 +18,46 @@
    ============================================================= */
 window.KUBA_REVIEWS = {
   ozet: {
-    puan: null,
-    yorumSayisi: null,
+    puan: 4.7,
+    yorumSayisi: 272,
     url: ""
   },
   yorumlar: [
     {
-      ad: "Merve K.",
-      puan: 5,
-      tarih: "Ağustos 2026",
-      metin: "İlk gün ölçüm alınıp programın ona göre yazılması beni en çok etkileyen şey oldu. Daha önce gittiğim salonlarda herkese aynı kâğıt veriliyordu. Burada dört haftada bir tekrar ölçüm yapılıyor, neyin değiştiğini rakamla görüyorsun."
-    },
-    {
-      ad: "Emre D.",
-      puan: 5,
-      tarih: "Temmuz 2026",
-      metin: "Temiz, düzenli ve kalabalık olmayan bir salon. Eğitmenler ilgili."
-    },
-    {
-      ad: "Ayşe T.",
-      puan: 4,
-      tarih: "Temmuz 2026",
-      metin: "Reformer pilates için geldim, grup küçük olduğu için eğitmen herkesle tek tek ilgilenebiliyor. Bel ağrım belirgin şekilde azaldı. Akşam saatlerinde rezervasyon bulmak bazen zor oluyor, tek eksisi bu."
-    },
-    {
-      ad: "Burak S.",
+      ad: "Irmak D.",
       puan: 5,
       tarih: "Haziran 2026",
-      metin: "Yıllardır spor yapıyorum ama form hatalarımı ilk kez burada düzelttiler. Kuvvet programı ile birlikte beslenme planı da verildi, ikisi birlikte yürüyünce sonuç hızlı geldi."
+      metin: "Nilay hoca ve Malhun hoca sayesinde yeniden pilatesi sevdim, kendileri çok güler yüzlüler, aynı zamanda motive ediciler :) Eğer eğlenerek kilo vermek isterseniz kesinlikle gidin derim."
     },
     {
-      ad: "Zeynep A.",
+      ad: "Nil K.",
       puan: 5,
       tarih: "Mayıs 2026",
-      metin: "Spora yeni başlayan biri olarak çekinerek gelmiştim. Kimse kimseyi yargılamıyor, eğitmen adım adım anlatıyor. Üç aydır düzenli geliyorum, ilk kez bir salonu bırakmadım."
+      metin: "Gelen insan profili düzgün, neredeyse herkes herkesle arkadaş. Salon oldukça temiz ve düzenli. Ekipmanlar yeni ve bakımlı, antrenman sırasında sıra bekleme problemi yaşanmıyor. Çalışan ekip ilgili ve yardımcı; özellikle yeni başlayanlar için yönlendirmeleri yeterli ve anlaşılır. Ortam motive edici, kalabalık olsa bile düzen korunuyor. Düzenli spor yapmak isteyenler için rahatlıkla tercih edilebilecek bir yer."
     },
     {
-      ad: "Hakan Y.",
+      ad: "Damla S.",
+      puan: 5,
+      tarih: "Mayıs 2026",
+      metin: "Spor salonuna başladığımdan beri hayatımda gerçekten fark yaratan bir deneyim yaşıyorum. Öncelikle salonun genel atmosferi insanı motive eden türden; içeri adım attığınız anda düzen, temizlik ve profesyonellik hemen hissediliyor. 6 aydır reformer pilatese gidiyorum, Nilay hocaya sonsuz teşekkürlerimi iletiyorum, kendisini çoooookkk seviyorum, iyi ki var; hem enerjisi hem de güler yüzlülüğü içimi ısıtıyor. Nilay Hoca gerçekten bu spor salonunun en değerli parçalarından biri. Ayrıca Ömer Bey'e ilgisi ve alakası için teşekkür ederim, her sorumu cevapladı, kendisi çok kibar birisi. Bütün hocalara tek tek teşekkür ederim, iyi ki varsınız. Elinize, emeğinize sağlık 🙂"
+    },
+    {
+      ad: "Muhammed L.",
+      puan: 5,
+      tarih: "Mayıs 2026",
+      metin: "Çalışanları güler yüzlü, Ömer Bey aralarında en kibar beyefendi, çok memnunuz. Kuba ailesinde herkese tavsiye ederim."
+    },
+    {
+      ad: "Ferhat A.",
       puan: 5,
       tarih: "Nisan 2026",
-      metin: "Kardiyo seansları nabza göre ayarlanıyor, boşa yorulmuyorsun. Otopark ve konum da rahat."
+      metin: "Uzun zamandır gittiğim bu spor salonu temizliği, alanında tecrübeli hocaları, salon içindeki yenilenen ve sürekli ihtiyaca göre düzenlenen aletleri ve spora gelen kişilerin profili ile gidilebilecek en iyi spor salonlarından biri diyebilirim."
+    },
+    {
+      ad: "Çağan M.",
+      puan: 5,
+      tarih: "Eylül 2025",
+      metin: "1 yıllık üyeliğimi tamamlamak üzereyim. Makineleri hem powerlifterlar için hem bodybuilding sporcuları için çok yeterli. PT'ler her ihtiyaç olduğunda sağ olsunlar ilgileniyorlar."
     }
   ]
 };
