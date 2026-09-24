@@ -622,6 +622,13 @@ body.nav-open .drawer .btn{ animation:drawer-cta var(--t-move) var(--ease) 290ms
   align-items:center;      /* etiketler birbirine göre dikeyde ortalanır */
   align-content:center;    /* satır sarıldığında satırlar da ortalanır */
 }
+/* Aynı sıradaki kartlarda fotoğraf, isim satırı, paragraf ve etiketler aynı
+   hizadan başlar: kartın 4 satırı üst ızgaranın satırlarını paylaşır (subgrid).
+   Desteklemeyen tarayıcıda kartlar eskisi gibi kendi içinde dizilir. */
+@supports (grid-template-rows:subgrid){
+  .grid > .trainer{ grid-row:span 4; grid-template-rows:subgrid; row-gap:.9rem; align-content:start; }
+  .grid > .trainer .trainer__tags{ align-self:start; align-content:flex-start; }
+}
 .trainer__tags li{
   display:inline-flex;
   align-items:center;      /* metin kendi kutusunun dikey ortasında */

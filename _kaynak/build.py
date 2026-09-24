@@ -257,7 +257,7 @@ BENEFITS = [
 # (ad, fotoğraf anahtarı [assets/img/<anahtar>.webp — şeffaf arka planlı kesilmiş figür], rol, tanıtım, etiketler)
 TRAINERS = [
     ("Kaan Demir",    "pt3", "Kuvvet &amp; performans", "Powerlifting geçmişi olan, teknik detaya takıntılı bir eğitmen. Ağırlık kaldırmayı yeni öğrenenlerle çalışmayı seviyor.", ["Kuvvet", "Hipertrofi", "Rehabilitasyon sonrası"]),
-    ("Elif Yıldırım", "pt2", "Reformer pilates",        "Duruş bozuklukları ve bel-boyun ağrısı olan üyelerle çalışıyor. Sekiz yıldır reformer eğitmeni.", ["Postür", "Mobilite", "Doğum sonrası"]),
+    ("Elif Yıldırım", "pt2", "Reformer pilates",        "Duruş bozuklukları ve bel-boyun ağrısı olan üyelerle çalışıyor. Sekiz yıldır reformer eğitmeni.", ["Postür", "Mobilite"]),
     ("Mert Aslan",    "pt4", "Kondisyon &amp; kardiyo", "Maraton koşucusu. Dayanıklılık programlarını nabız verisine göre kuruyor, tempoyu birlikte ayarlıyorsunuz.", ["HIIT", "Dayanıklılık", "Koşu tekniği"]),
     ("Burak Şahin",   "pt1", "Fonksiyonel antrenman",   "Günlük hayatta işe yarayan hareket kalitesi üzerine çalışıyor. Masa başı çalışanların favorisi.", ["Fonksiyonel", "Core", "Esneklik"]),
 ]
